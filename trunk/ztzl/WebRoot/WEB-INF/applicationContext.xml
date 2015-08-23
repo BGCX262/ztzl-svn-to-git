@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	http://www.springframework.org/schema/tx
+	http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+	http://www.springframework.org/schema/aop 
+	http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+	">
+	<!--  
+		<bean id="dataSource"
+		class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName"
+		value="oracle.jdbc.driver.OracleDriver">
+		</property>
+		<property name="url"
+		value="jdbc:oracle:thin:@192.168.1.2:1521:orcl">
+		</property>
+		<property name="username" value="ztzl"></property>
+		<property name="password" value="ztzl"></property>
+		</bean>
+	-->
+	<bean id="dataSource"
+		class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName">
+			<value>java:comp/env/jdbc/ztzl</value>
+		</property>
+	</bean>
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.Oracle9Dialect
+				</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<prop key="connection.pool_size">100</prop>
+				<prop key="hibernate.jdbc.batch_size">100</prop>
+				<prop key="hibernate.show_sql">false</prop>
+			</props>
+		</property>
+
+		<property name="mappingResources">
+			<list>
+				<value>hibernate/pojo/Pris.hbm.xml</value>
+				<value>hibernate/pojo/Operators.hbm.xml</value>
+				<value>hibernate/pojo/Rolepri.hbm.xml</value>
+				<value>hibernate/pojo/Roles.hbm.xml</value>
+				<value>hibernate/pojo/Operatorrole.hbm.xml</value>
+				<value>hibernate/pojo/Producttype.hbm.xml</value>
+				<value>hibernate/pojo/Errortype.hbm.xml</value>
+				<value>hibernate/pojo/Proeng.hbm.xml</value>
+				<value>hibernate/pojo/Prorepair.hbm.xml</value>
+				<value>hibernate/pojo/Products.hbm.xml</value>
+				<value>hibernate/pojo/Proflow.hbm.xml</value>
+				<value>hibernate/pojo/Errorfor.hbm.xml</value>
+				<value>hibernate/pojo/Sendarea.hbm.xml</value>
+				<value>hibernate/pojo/Boxnum.hbm.xml</value>
+				<value>hibernate/pojo/Prowarehousing.hbm.xml</value>
+				<value>hibernate/pojo/Procarry.hbm.xml</value>
+				<value>hibernate/pojo/Prorepairstatus.hbm.xml</value>
+				<value>hibernate/pojo/Proengsatus.hbm.xml</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- 事务处理配置  -->
+	<!-- 默认为每个方法是一个事务，//TODO:修改为每个Action 是一个事务 -->
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory">
+			<ref local="sessionFactory" />
+		</property>
+
+	</bean>
+
+
+	<!-- 注解式事务配置 -->
+	<!-- <tx:annotation-driven />  启用错误 -->
+	<!-- 在定义前使用　@Transactional(readOnly=false)　　　　readOnly=true 代表只读事务
+		　　　　　　　　　　@Transactional(rollbackFor=　new Exception())  Exception 代表异常的实例　（出现某种异常时回滚）
+		　　　　　　　　　　@Transactional(propagation=PROPAGATION_REQUIRED) 分页请求为需要时自动预分页？
+		　				@Transactional(rollbackForClassname=classname)   某个异常类时回滚
+		rollbackFor 和 rollbackForClassname 都有　noRollbackFor 和 noRollbackForClassname 两个反义设置
+	-->
+
+	<!--   方法式事务配置。　暂不使用
+		<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+		<tx:method name="save" propagation="REQUIRED" />
+		<tx:method name="delete" propagation="PROPAGATION_REQUIRED,readOnly" />
+		<tx:method name="merge" propagation="REQUIRED" />
+		<tx:method name="*" />
+		</tx:attributes>
+		
+		</tx:advice>
+		
+		<aop:config>
+		<aop:pointcut id="serviceMethods" expression="execution(* struts.action.BaseAction(..))"/>
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="serviceMethods"/>
+		</aop:config>
+	-->
+	<!-- 事务处理配置结束 -->
+	<aop:aspectj-autoproxy proxy-target-class="true" />
+	<!-- AOP 测试   测试出错　　添加AOP后，json 处理hibernate 数据出错？
+		<aop:config>
+		
+		<aop:pointcut id="loggerCalls" expression="execution(* struts.action.*.set*(..)) "/>
+		<aop:aspect id="logAspect" ref="testAOP"> 
+		<aop:around pointcut-ref="loggerCalls" method="aroundLogCalls"/>
+		</aop:aspect>
+		</aop:config>
+		
+		<bean id="testAOP" class="struts.action.TestAOP"></bean>
+	-->
+
+	<!-- struts2 Action 和 ServiceBean 配置 -->
+	<bean id="baseAction" class="struts.BaseAction" scope="prototype">
+		<property name="baseDAO">
+			<ref local="baseDAO" />
+		</property>
+	</bean>
+
+
+
+
+	<!-- 通用 service 和 DAO -->
+	<bean id="baseDAO" class="hibernate.dao.impl.BaseDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+
+
+	<bean id="PrisDAO" class="hibernate.pojo.PrisDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="OperatorsDAO" class="hibernate.pojo.OperatorsDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="RolepriDAO" class="hibernate.pojo.RolepriDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+
+	<bean id="RolesDAO" class="hibernate.pojo.RolesDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+
+	<bean id="OperatorroleDAO" class="hibernate.pojo.OperatorroleDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="ProducttypeDAO" class="hibernate.pojo.ProducttypeDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="ErrortypeDAO" class="hibernate.pojo.ErrortypeDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="ProengDAO" class="hibernate.pojo.ProengDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="ProrepairDAO" class="hibernate.pojo.ProrepairDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="ProductsDAO" class="hibernate.pojo.ProductsDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="ProflowDAO" class="hibernate.pojo.ProflowDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="ErrorforDAO" class="hibernate.pojo.ErrorforDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="SendareaDAO" class="hibernate.pojo.SendareaDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="BoxnumDAO" class="hibernate.pojo.BoxnumDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="ProwarehousingDAO"
+		class="hibernate.pojo.ProwarehousingDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="ProcarryDAO" class="hibernate.pojo.ProcarryDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="ProrepairstatusDAO"
+		class="hibernate.pojo.ProrepairstatusDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="ProengsatusDAO" class="hibernate.pojo.ProengsatusDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+</beans>

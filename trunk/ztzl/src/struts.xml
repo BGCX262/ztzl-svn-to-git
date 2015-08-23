@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+      "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+      "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<include file="struts-default.xml" />
+	<!--  <constant name="struts.multipart.maxSize" value="150971520" />-->
+	<!-- 文件上传中整个请求内容允许的最大字节数为15M -->
+
+
+	<!-- 判断是否登录 -->
+	<!--<package name="authority-default" extends="struts-default">
+		<interceptors>
+		<interceptor
+		class="com.lan.baseproject.interceptor.AuthorityInterceptor"
+		name="authority" />
+		<interceptor-stack name="mydefault">
+		<interceptor-ref name="defaultStack"></interceptor-ref>
+		<interceptor-ref name="authority"></interceptor-ref>
+		</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="mydefault" />
+		<global-results>
+		<result name="login" type="redirect">/login.jsp</result>
+		</global-results>
+		</package>
+	-->
+	<!-- 判断登录结束 -->
+
+	<!-- 返回jsp页面的包 -->
+
+	<package name="struts2" namespace="/action"
+		extends="struts-default">
+		<global-results>
+			<result name="login" type="redirect">
+				login!default.action
+			</result>
+			<result name="login">/login.jsp</result>
+			<result name="error">/error.jsp</result>
+		</global-results>
+
+
+		<!-- 测试Action -->
+		<!--  
+			<action name="Chat" class="ss.ChatAction">
+			<result>/UserList.jsp</result>
+			</action>
+		-->
+		<!-- <action name="sum" class="struts.action.FirstAction">
+			<result name="positive">/positive.jsp</result>
+			<result name="negative">/negative.jsp</result>
+			</action>
+		-->
+	</package>
+
+	<!-- 需要返回json类型的包 -->
+
+	<package name="json" namespace="/json" extends="json-default">
+
+		<!-- 用户登陆验证 -->
+		<action name="login" class="struts.Login">
+			<result type="json" />
+		</action>
+		<!-- 权限列表 -->
+		<action name="getTree" class="struts.TreeTest">
+			<result type="json" />
+		</action>
+
+		<!-- 窗口列表 -->
+		<action name="getWindow" class="struts.GetWindow">
+			<result type="json" />
+		</action>
+
+		<!-- 产品类别管理 -->
+		<action name="producttype" class="struts.ProducttypeMan">
+			<result type="json" />
+		</action>
+
+		<!-- 产品信息管理 -->
+		<action name="productman" class="struts.ProductMan">
+			<result type="json" />
+		</action>
+
+		<!-- 故障类别信息管理 -->
+		<action name="errortypeman" class="struts.ErrorTypeMan">
+			<result type="json" />
+		</action>
+
+		<!-- 故障原因管理 -->
+		<action name="errorforman" class="struts.ErrorForMan">
+			<result type="json" />
+		</action>
+
+		<!-- 产品返修信息管理 -->
+		<action name="repairman" class="struts.RepairMan">
+			<result type="json" />
+		</action>
+
+		<!-- 产品维修管理 -->
+		<action name="repaired" class="struts.Repaired">
+			<result type="json" />
+		</action>
+
+		<!-- 产品入库管理 -->
+		<action name="warehousing" class="struts.Warehousing">
+			<result type="json" />
+		</action>
+
+		<!-- 产品出库管理 -->
+		<action name="carryout" class="struts.CarryOut">
+			<result type="json" />
+		</action>
+
+		<!-- 返修产品退回 -->
+		<action name="returnplant" class="struts.ReturnPlant">
+			<result type="json" />
+		</action>
+
+		<!-- 发送地区管理 -->
+		<action name="sendarea" class="struts.SendArea">
+			<result type="json" />
+		</action>
+
+		<!-- 产品安装管理 -->
+		<action name="proeng" class="struts.ProEng">
+			<result type="json" />
+		</action>
+
+		<!-- 产品安装管理 -->
+		<action name="engin" class="struts.EngIn">
+			<result type="json" />
+		</action>
+
+		<!-- 产品返库管理 -->
+		<action name="proreturn" class="struts.ProReturn">
+			<result type="json" />
+		</action>
+
+		<!-- 生技部接收 -->
+		<action name="techin" class="struts.TechIn">
+			<result type="json" />
+		</action>
+
+		<!-- 生技部发送-->
+		<action name="techout" class="struts.TechOut">
+			<result type="json" />
+		</action>
+
+		<!-- 生产车间接收 -->
+		<action name="plantin" class="struts.PlantIn">
+			<result type="json" />
+		</action>
+
+		<!-- 产品信息导入 -->
+		<action name="impnewpro" class="struts.ImpNewPro">
+			<interceptor-ref name="fileUploadStack" />
+			<result>
+				<param name="contentType">
+					text/html;charset=utf-8
+				</param>
+			</result>
+		</action>
+
+		<!-- 485数据导入 -->
+		<action name="imp485" class="struts.Imp485">
+			<interceptor-ref name="fileUploadStack" />
+			<result>
+				<param name="contentType">
+					text/html;charset=utf-8
+				</param>
+			</result>
+		</action>
+
+		<!-- 400V数据导入 -->
+		<action name="imp400" class="struts.Imp400">
+			<result type="json" />
+		</action>
+
+
+		<!-- 用户管理 -->
+		<action name="userman" class="struts.UserMan">
+			<result type="json" />
+		</action>
+
+		<!-- 密码修改 -->
+		<action name="chpass" class="struts.ChPass">
+			<result type="json" />
+		</action>
+
+		<!-- 角色管理 -->
+		<action name="roleman" class="struts.RoleMan">
+			<result type="json" />
+		</action>
+
+
+		<!-- 权限管理 -->
+		<action name="prisman" class="struts.PrisMan">
+			<result type="json" />
+		</action>
+
+		<!-- 以下为查询内容 -->
+		<!-- 产品信息查询 -->
+		<action name="productquery" class="struts.query.ProductQuery">
+			<result type="json" />
+		</action>
+
+		<!-- 产品位置查询 -->
+		<action name="prowarequery" class="struts.query.ProWareQuery">
+			<result type="json" />
+		</action>
+
+		<!-- 产品流程查询 -->
+		<action name="proflowquery" class="struts.query.ProFlowQuery">
+			<result type="json" />
+		</action>
+
+		<!-- 返修产品查询 -->
+		<action name="repairquery" class="struts.query.RepairQuery">
+			<result type="json" />
+		</action>
+
+		<!-- 以下为查询类 -->
+		<!-- 月产量图表查询 -->
+		<action name="monthyield" class="struts.charts.MonthYield">
+			<result type="json" />
+		</action>
+
+		<!-- 月产量饼图查询 -->
+		<action name="monthtypepie"
+			class="struts.charts.MonthTypePie">
+			<result type="json" />
+		</action>
+
+
+		<!-- 月返修图表查询 -->
+		<action name="monthrepair" class="struts.charts.MonthRepair">
+			<result type="json" />
+		</action>
+
+		<!-- 月返修饼图查询 -->
+		<action name="monthrepairpie"
+			class="struts.charts.MonthRepairPie">
+			<result type="json" />
+		</action>
+
+		<!-- 以下为地市开放查询内容 -->
+		<!-- 地市安装查询 -->
+		<action name="areaengquery" class="struts.query.AreaEngQuery">
+			<result type="json" />
+		</action>
+
+		<!-- 地市返修查询 -->
+		<action name="arearepairequery"
+			class="struts.query.AreaRepairQuery">
+			<result type="json" />
+		</action>
+
+		<!--地市发送产品查询 -->
+		<action name="areasendquery"
+			class="struts.query.AreaSendQuery">
+			<result type="json" />
+		</action>
+
+		<!-- 以下为报表类 -->
+		<action name="prowarehousing"
+			class="struts.report.Prowarehousing">
+			<result type="json" />
+		</action>
+		<action name="procarry" class="struts.report.Procarry">
+			<result type="json" />
+		</action>
+		<action name="prorepairstatus"
+			class="struts.report.Prorepairstatus">
+			<result type="json" />
+		</action>
+		<action name="proengstatus"
+			class="struts.report.Proengstatus">
+			<result type="json" />
+		</action>
+
+
+
+	</package>
+
+
+
+</struts>

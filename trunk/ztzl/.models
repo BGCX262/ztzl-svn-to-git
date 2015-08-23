@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<core.ProjectElement version="12.5" res="/ztzl">
+ <pdm.core.PdmModelElement fnam="ztzl.pdm" oid="{A3755F57-D764-419B-9A85-BFDF176D6487}" res="ztzl.pdm">
+  <core.PackageElement oid="{00000000-0000-0000-0000-000000000000}" res="/ztzl" />
+  <core.PackageElement res="/ztzl/.settings" />
+  <core.PackageElement res="/ztzl/WebRoot">
+   <core.PackageElement res="META-INF" />
+   <core.PackageElement res="WEB-INF">
+    <core.PackageElement res="classes">
+     <core.PackageElement res="common" />
+     <core.PackageElement res="filters" />
+     <core.PackageElement res="hibernate">
+      <core.PackageElement res="dao">
+       <core.PackageElement res="impl" />
+      </core.PackageElement>
+      <core.PackageElement res="pojo" />
+     </core.PackageElement>
+     <core.PackageElement res="struts">
+      <core.PackageElement res="query" />
+      <core.PackageElement res="charts" />
+     </core.PackageElement>
+    </core.PackageElement>
+    <core.PackageElement res="lib" />
+   </core.PackageElement>
+   <core.PackageElement res="ext">
+    <core.PackageElement res="adapter">
+     <core.PackageElement res="ext" />
+     <core.PackageElement res="jquery" />
+     <core.PackageElement res="prototype" />
+     <core.PackageElement res="yui" />
+    </core.PackageElement>
+    <core.PackageElement res="air">
+     <core.PackageElement res="resources">
+      <core.PackageElement res="icons" />
+      <core.PackageElement res="images" />
+     </core.PackageElement>
+     <core.PackageElement res="samples">
+      <core.PackageElement res="tasks">
+       <core.PackageElement res="adobe" />
+       <core.PackageElement res="ext-2.0">
+        <core.PackageElement res="adapter">
+         <core.PackageElement res="ext" />
+        </core.PackageElement>
+        <core.PackageElement res="resources">
+         <core.PackageElement res="css" />
+         <core.PackageElement res="images">
+          <core.PackageElement res="default">
+           <core.PackageElement res="box" />
+           <core.PackageElement res="button" />
+           <core.PackageElement res="dd" />
+           <core.PackageElement res="editor" />
+           <core.PackageElement res="form" />
+           <core.PackageElement res="grid" />
+           <core.PackageElement res="layout" />
+           <core.PackageElement res="menu" />
+           <core.PackageElement res="panel" />
+           <core.PackageElement res="progress" />
+           <core.PackageElement res="qtip" />
+           <core.PackageElement res="shared" />
+           <core.PackageElement res="sizer" />
+           <core.PackageElement res="tabs" />
+           <core.PackageElement res="toolbar" />
+           <core.PackageElement res="tree" />
+           <core.PackageElement res="window" />
+          </core.PackageElement>
+          <core.PackageElement res="gray">
+           <core.PackageElement res="button" />
+           <core.PackageElement res="panel" />
+           <core.PackageElement res="qtip" />
+           <core.PackageElement res="tabs" />
+           <core.PackageElement res="toolbar" />
+           <core.PackageElement res="window" />
+          </core.PackageElement>
+         </core.PackageElement>
+        </core.PackageElement>
+       </core.PackageElement>
+       <core.PackageElement res="ext-air">
+        <core.PackageElement res="resources">
+         <core.PackageElement res="icons" />
+         <core.PackageElement res="images" />
+        </core.PackageElement>
+       </core.PackageElement>
+       <core.PackageElement res="images" />
+       <core.PackageElement res="js" />
+      </core.PackageElement>
+     </core.PackageElement>
+     <core.PackageElement res="src">
+      <core.PackageElement res="sql" />
+     </core.PackageElement>
+    </core.PackageElement>
+    <core.PackageElement res="build">
+     <core.PackageElement res="adapter" />
+     <core.PackageElement res="core" />
+     <core.PackageElement res="data" />
+     <core.PackageElement res="dd" />
+     <core.PackageElement res="locale" />
+     <core.PackageElement res="state" />
+     <core.PackageElement res="util" />
+     <core.PackageElement res="widgets">
+      <core.PackageElement res="form" />
+      <core.PackageElement res="grid" />
+      <core.PackageElement res="layout" />
+      <core.PackageElement res="menu" />
+      <core.PackageElement res="tips" />
+      <core.PackageElement res="tree" />
+     </core.PackageElement>
+    </core.PackageElement>
+    <core.PackageElement res="docs">
+     <core.PackageElement res="output" />
+     <core.PackageElement res="resources" />
+    </core.PackageElement>
+    <core.PackageElement res="examples">
+     <core.PackageElement res="core" />
+     <core.PackageElement res="dd" />
+     <core.PackageElement res="debug" />
+     <core.PackageElement res="desktop">
+      <core.PackageElement res="css" />
+      <core.PackageElement res="images">
+       <core.PackageElement res="taskbar">
+        <core.PackageElement res="black" />
+       </core.PackageElement>
+      </core.PackageElement>
+      <core.PackageElement res="js" />
+      <core.PackageElement res="wallpapers" />
+     </core.PackageElement>
+     <core.PackageElement res="feed-viewer">
+      <core.PackageElement res="images" />
+     </core.PackageElement>
+     <core.PackageElement res="form" />
+     <core.PackageElement res="forum" />
+     <core.PackageElement res="grid">
+      <core.PackageElement res="images" />
+     </core.PackageElement>
+     <core.PackageElement res="grid-filtering">
+      <core.PackageElement res="grid">
+       <core.PackageElement res="filter" />
+      </core.PackageElement>
+      <core.PackageElement res="img" />
+      <core.PackageElement res="menu" />
+     </core.PackageElement>
+     <core.PackageElement res="history" />
+     <core.PackageElement res="layout">
+      <core.PackageElement res="images" />
+     </core.PackageElement>
+     <core.PackageElement res="layout-browser">
+      <core.PackageElement res="images" />
+      <core.PackageElement res="layouts" />
+     </core.PackageElement>
+     <core.PackageElement res="locale" />
+     <core.PackageElement res="menu" />
+     <core.PackageElement res="message-box">
+      <core.PackageElement res="images" />
+     </core.PackageElement>
+     <core.PackageElement res="multiselect">
+      <core.PackageElement res="images" />
+     </core.PackageElement>
+     <core.PackageElement res="organizer" />
+     <core.PackageElement res="panel" />
+     <core.PackageElement res="portal" />
+     <core.PackageElement res="remoteload" />
+     <core.PackageElement res="resizable" />
+     <core.PackageElement res="shared">
+      <core.PackageElement res="extjs">
+       <core.PackageElement res="css" />
+       <core.PackageElement res="images" />
+      </core.PackageElement>
+      <core.PackageElement res="icons">
+       <core.PackageElement res="fam" />
+      </core.PackageElement>
+      <core.PackageElement res="screens" />
+     </core.PackageElement>
+     <core.PackageElement res="simple-widgets">
+      <core.PackageElement res="images" />
+     </core.PackageElement>
+     <core.PackageElement res="slider">
+      <core.PackageElement res="images" />
+     </core.PackageElement>
+     <core.PackageElement res="state" />
+     <core.PackageElement res="statusbar">
+      <core.PackageElement res="images" />
+     </core.PackageElement>
+     <core.PackageElement res="tabs" />
+     <core.PackageElement res="tasks">
+      <core.PackageElement res="db" />
+      <core.PackageElement res="images" />
+     </core.PackageElement>
+     <core.PackageElement res="tree">
+      <core.PackageElement res="images">
+       <core.PackageElement res="thumbs" />
+      </core.PackageElement>
+     </core.PackageElement>
+     <core.PackageElement res="view">
+      <core.PackageElement res="images">
+       <core.PackageElement res="thumbs" />
+      </core.PackageElement>
+     </core.PackageElement>
+     <core.PackageElement res="window" />
+    </core.PackageElement>
+    <core.PackageElement res="resources">
+     <core.PackageElement res="css" />
+     <core.PackageElement res="images">
+      <core.PackageElement res="default">
+       <core.PackageElement res="box" />
+       <core.PackageElement res="button" />
+       <core.PackageElement res="dd" />
+       <core.PackageElement res="editor" />
+       <core.PackageElement res="form" />
+       <core.PackageElement res="grid" />
+       <core.PackageElement res="layout" />
+       <core.PackageElement res="menu" />
+       <core.PackageElement res="panel" />
+       <core.PackageElement res="progress" />
+       <core.PackageElement res="qtip" />
+       <core.PackageElement res="shared" />
+       <core.PackageElement res="sizer" />
+       <core.PackageElement res="slider" />
+       <core.PackageElement res="tabs" />
+       <core.PackageElement res="toolbar" />
+       <core.PackageElement res="tree" />
+       <core.PackageElement res="window" />
+      </core.PackageElement>
+      <core.PackageElement res="gray">
+       <core.PackageElement res="button" />
+       <core.PackageElement res="panel" />
+       <core.PackageElement res="qtip" />
+       <core.PackageElement res="tabs" />
+       <core.PackageElement res="toolbar" />
+       <core.PackageElement res="window" />
+      </core.PackageElement>
+      <core.PackageElement res="slate">
+       <core.PackageElement res="box" />
+       <core.PackageElement res="button" />
+       <core.PackageElement res="editor" />
+       <core.PackageElement res="form" />
+       <core.PackageElement res="grid" />
+       <core.PackageElement res="menu" />
+       <core.PackageElement res="panel" />
+       <core.PackageElement res="progress" />
+       <core.PackageElement res="qtip" />
+       <core.PackageElement res="shared" />
+       <core.PackageElement res="sizer" />
+       <core.PackageElement res="slider" />
+       <core.PackageElement res="tabs" />
+       <core.PackageElement res="toolbar" />
+       <core.PackageElement res="tree" />
+       <core.PackageElement res="window" />
+      </core.PackageElement>
+      <core.PackageElement res="vista">
+       <core.PackageElement res="basic-dialog" />
+       <core.PackageElement res="grid" />
+       <core.PackageElement res="layout" />
+       <core.PackageElement res="qtip" />
+       <core.PackageElement res="sizer" />
+       <core.PackageElement res="tabs" />
+       <core.PackageElement res="toolbar" />
+      </core.PackageElement>
+     </core.PackageElement>
+    </core.PackageElement>
+    <core.PackageElement res="source">
+     <core.PackageElement res="adapter" />
+     <core.PackageElement res="core" />
+     <core.PackageElement res="data" />
+     <core.PackageElement res="dd" />
+     <core.PackageElement res="locale" />
+     <core.PackageElement res="state" />
+     <core.PackageElement res="util" />
+     <core.PackageElement res="widgets">
+      <core.PackageElement res="form" />
+      <core.PackageElement res="grid" />
+      <core.PackageElement res="layout" />
+      <core.PackageElement res="menu" />
+      <core.PackageElement res="tips" />
+      <core.PackageElement res="tree" />
+     </core.PackageElement>
+    </core.PackageElement>
+   </core.PackageElement>
+   <core.PackageElement res="img" />
+   <core.PackageElement res="js">
+    <core.PackageElement res="page">
+     <core.PackageElement res="query" />
+     <core.PackageElement res="charts" />
+    </core.PackageElement>
+   </core.PackageElement>
+   <core.PackageElement res="page">
+    <core.PackageElement res="query" />
+    <core.PackageElement res="charts" />
+   </core.PackageElement>
+   <core.PackageElement res="mods" />
+   <core.PackageElement res="Charts">
+    <core.PackageElement res="JSClass" />
+   </core.PackageElement>
+  </core.PackageElement>
+  <core.PackageElement res="/ztzl/src">
+   <core.PackageElement res="common" />
+   <core.PackageElement res="filters" />
+   <core.PackageElement res="hibernate">
+    <core.PackageElement res="dao">
+     <core.PackageElement res="impl" />
+    </core.PackageElement>
+    <core.PackageElement res="pojo" />
+   </core.PackageElement>
+   <core.PackageElement res="struts">
+    <core.PackageElement res="query" />
+    <core.PackageElement res="charts" />
+   </core.PackageElement>
+  </core.PackageElement>
+ </pdm.core.PdmModelElement>
+</core.ProjectElement>
